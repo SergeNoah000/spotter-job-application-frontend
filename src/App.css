@@ -36,3 +36,60 @@
     transform: rotate(360deg);
   }
 }
+
+/* Styles pour Leaflet Map */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.truck-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.driver-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Animation pulse pour le marqueur conducteur */
+@keyframes pulse {
+  0% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.driver-marker div {
+  animation: pulse 2s infinite;
+}
+
+/* Styles pour les popups Leaflet */
+.leaflet-popup-content {
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.leaflet-popup-content h4 {
+  margin-top: 0;
+}
+
+/* Responsive map */
+@media (max-width: 768px) {
+  .leaflet-container {
+    height: 300px !important;
+  }
+}
+
+/* Corrections pour les icônes Leaflet par défaut */
+.leaflet-default-icon-path {
+  background-image: url('https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png');
+}

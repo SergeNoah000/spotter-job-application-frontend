@@ -1,0 +1,254 @@
+.address-autocomplete {
+  position: relative;
+  width: 100%;
+}
+
+.address-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.address-input-container {
+  position: relative;
+}
+
+.address-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.address-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.address-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.address-input:disabled {
+  background-color: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.address-input-icon {
+  position: absolute;
+  left: 0.75rem;
+  color: #6b7280;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.current-location-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  z-index: 2;
+}
+
+.current-location-btn:hover:not(:disabled) {
+  color: #3b82f6;
+  background-color: #f3f4f6;
+}
+
+.current-location-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.address-loading {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.address-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  max-height: 20rem;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.address-suggestion {
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.address-suggestion:last-child {
+  border-bottom: none;
+}
+
+.address-suggestion:hover,
+.address-suggestion.selected {
+  background-color: #f8fafc;
+}
+
+.suggestion-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.suggestion-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.suggestion-icon i {
+  color: #3b82f6;
+  font-size: 0.875rem;
+}
+
+.suggestion-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.suggestion-text {
+  font-weight: 500;
+  color: #111827;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.125rem;
+}
+
+.suggestion-type {
+  color: #6b7280;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.no-suggestions {
+  padding: 1rem;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .address-suggestions {
+    max-height: 15rem;
+  }
+  
+  .suggestion-text {
+    font-size: 0.8rem;
+  }
+  
+  .suggestion-type {
+    font-size: 0.7rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .address-input {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .address-input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+  }
+  
+  .address-suggestions {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+  
+  .address-suggestion:hover,
+  .address-suggestion.selected {
+    background-color: #374151;
+  }
+  
+  .suggestion-text {
+    color: #f9fafb;
+  }
+  
+  .suggestion-type {
+    color: #9ca3af;
+  }
+  
+  .no-suggestions {
+    color: #9ca3af;
+  }
+}
+
+/* Accessibility */
+.address-input:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.current-location-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Animation pour l'apparition des suggestions */
+.address-suggestions {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
