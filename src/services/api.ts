@@ -11,7 +11,7 @@ import {
   DashboardStats 
 } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://spotter-sergenoah-backend.onrender.com/api';
 
 // Configuration Axios
 const api = axios.create({
